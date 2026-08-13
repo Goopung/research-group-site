@@ -199,7 +199,7 @@ section[id]{scroll-margin-top:96px}
 .rmid span{display:block;font-size:13.5px;color:var(--ink-3);margin-top:3px}
 .rtog{font-family:var(--ff-m);font-size:15px;color:var(--ink-3);width:22px;text-align:center;transition:transform .22s}
 .rrow[aria-expanded="true"] .rtog{transform:rotate(45deg);color:var(--mix)}
-.rdet{display:none;padding:4px 6px 30px;border-bottom:1px solid var(--line-2);background:var(--card)}
+.rdet{display:none;padding:4px 6px 26px;border-bottom:1px solid var(--line-2);background:var(--card)}
 .sec.white .rdet{background:var(--paper)}
 .rdet.open{display:block}
 .rdet-in{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 30px}
@@ -209,7 +209,6 @@ section[id]{scroll-margin-top:96px}
 .rdet p{font-size:14.5px;line-height:1.8;max-width:74ch}
 .rdet li{font-size:13.5px;position:relative;padding-left:13px;margin-bottom:4px}
 .rdet li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--tc,var(--ink-3))}
-.rdet .go{display:inline-block;margin-top:18px;font-size:13.5px;color:var(--mix);border-bottom:1px solid currentColor}
 
 /* ---------- 대표 논문 카드 ---------- */
 .pcards{display:grid;gap:16px}
@@ -447,14 +446,18 @@ section[id]{scroll-margin-top:96px}
 .ttopics li{position:relative;padding-left:13px;font-size:13.5px;color:var(--ink-2);margin-bottom:3px;line-height:1.6}
 .ttopics li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--tc)}
 
-/* 1차년도 성과 */
+/* 연구그룹 성과 */
 .achs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid var(--ink)}
 .ach{padding:22px 24px 24px;border-right:1px solid var(--line-2)}
 .ach:first-child{padding-left:0}
 .ach:last-child{border-right:0;padding-right:0}
 .ach b{display:block;font-size:38px;font-weight:500;color:var(--ink);line-height:1;letter-spacing:-.03em}
+.ach b small{font-size:15px;font-weight:400;color:var(--ink-3);margin-left:4px;letter-spacing:0}
 .ach span{display:block;font-size:14px;color:var(--ink);margin-top:10px;font-weight:500}
-.ach i{display:block;font-style:normal;font-family:var(--ff-m);font-size:11px;color:var(--ink-3);margin-top:3px}
+.ach i{display:block;font-style:normal;font-size:12px;color:var(--ink-3);margin-top:3px}
+.achnote{display:flex;flex-wrap:wrap;gap:6px 26px;border-top:1px solid var(--line-2);padding-top:14px;margin-top:0;font-size:13px;color:var(--ink-3)}
+.achnote b{font-family:var(--ff-m);color:var(--ink-2);font-weight:500}
+.achnote span:first-child{color:var(--ink-2)}
 
 /* 2차년도 일정 */
 .sched{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
@@ -619,13 +622,14 @@ section[id]{scroll-margin-top:96px}
     <div class="wrap">
       <div class="shead rise">
         <div>
-          <span class="eye">FIRST YEAR</span>
-          <h2>1차년도에 한 일</h2>
-          <p>2025년 6월 연구를 시작해 2025년 12월까지 낸 실적입니다. 학술대회 발표가 목표를 크게 넘겼고, 이때 발표한 연구가 2차년도 게재논문으로 이어졌습니다.</p>
+          <span class="eye">RESULTS</span>
+          <h2>연구그룹 성과</h2>
+          <p>2025년 6월 연구를 시작한 뒤 지금까지 연구그룹이 낸 실적입니다. 연구자 개인이 아니라 연구그룹 전체를 기준으로 집계했습니다. 1차년도에는 학술대회 발표가 목표를 크게 넘겼고, 그때 발표한 연구가 2차년도 게재논문으로 이어졌습니다.</p>
         </div>
-        <a class="gomore" href="publications.html?tab=c">발표 목록</a>
+        <a class="gomore" href="publications.html">성과 전체 보기</a>
       </div>
       <div class="achs" data-ach></div>
+      <div class="achnote" data-achnote></div>
     </div>
   </section>
 
@@ -704,7 +708,9 @@ section[id]{scroll-margin-top:96px}
         <div>
           <span class="eye">RESEARCHERS</span>
           <h2>연구진 <span class="m" data-mcount>6</span>인</h2>
+          <p>이름을 누르면 연구 분야와 본 과제에서의 역할 분담이 펼쳐집니다. 논문과 발표 실적은 연구자 개인이 아니라 연구그룹 단위로 집계해 연구성과 페이지에 정리했습니다.</p>
         </div>
+        <a class="gomore" href="publications.html">연구그룹 성과 보기</a>
       </div>
       <div class="chips gap-b" data-mfilter></div>
       <div class="roster" data-members></div>
@@ -741,8 +747,6 @@ section[id]{scroll-margin-top:96px}
         <div class="grp">
           <label class="sr-only" for="q">검색</label>
           <input class="inp" id="q" type="search" placeholder="제목, 저자, 게재지 검색" data-q>
-          <label class="sr-only" for="mem">연구자</label>
-          <select class="sel" id="mem" data-mem></select>
           <label class="sr-only" for="sort">정렬</label>
           <select class="sel" id="sort" data-sort>
             <option value="new">최신순</option>
@@ -1011,12 +1015,17 @@ window.RG_DATA = {
     { period: "26.09 ~ 27.02", team: "t3", work: "양자화를 통한 모델 경량화" }
   ],
 
-  /* ---------- 6. 1차년도 성과 ---------- */
+  /* ---------- 6. 연구그룹 성과 ----------
+     숫자는 아래 publications, conferences, awards 배열에서 자동으로 셉니다.
+     count 에 쓸 수 있는 값: publications, presentations, awards,
+     conferences:국제, conferences:국내, publications:KCI, publications:국제색인
+     n 값을 직접 적어 두면 세지 않고 그 값을 씁니다.
+  ------------------------------------------ */
   achievements: [
-    { label: "국내 학술대회 발표", n: 15, goal: "목표 1건" },
-    { label: "국제 학술대회 발표", n: 7, goal: "목표 1건" },
-    { label: "연구팀 주관 공개발표", n: 1, goal: "목표 0건" },
-    { label: "우수논문상 및 수상", n: 3, goal: "학회 3곳" }
+    { label: "게재논문", count: "publications", unit: "편", goal: "4년 목표 32편" },
+    { label: "국제 학술대회 발표", count: "conferences:국제", unit: "건", goal: "4년 목표 6건" },
+    { label: "국내 학술대회 발표", count: "conferences:국내", unit: "건", goal: "4년 목표 6건" },
+    { label: "우수논문상과 수상", count: "awards", unit: "건", goal: "학회 3곳" }
   ],
 
   /* ---------- 7. 성과 목표 ---------- */
@@ -1485,6 +1494,20 @@ window.RG_DATA = {
     var t = teamById((m.teams || [])[0]);
     return t ? t.track : (m.side === "이공" ? "sci" : "hs");
   }
+  var KCI = "KCI";
+  function tally(key) {
+    var pubs = D.publications || [], confs = D.conferences || [];
+    if (key === "publications") return pubs.length;
+    if (key === "publications:KCI") return pubs.filter(function (p) { return p.type === KCI; }).length;
+    if (key === "publications:국제색인") return pubs.filter(function (p) { return p.type !== KCI; }).length;
+    if (key === "presentations") return (D.presentations || []).length;
+    if (key === "awards") return (D.awards || []).length;
+    if (key === "conferences") return confs.length;
+    if (key === "conferences:국제") return confs.filter(function (c) { return c.scope === "국제"; }).length;
+    if (key === "conferences:국내") return confs.filter(function (c) { return c.scope === "국내"; }).length;
+    return 0;
+  }
+
   function nowYearIdx() {
     var t = Date.now(), k = -1;
     (D.roadmap || []).forEach(function (r, i) { if (t >= new Date(r.start).getTime()) k = i; });
@@ -1551,7 +1574,6 @@ window.RG_DATA = {
               "<div><h4>연구 분야</h4><ul>" + flds + "</ul></div>" +
               "<div><h4>역할 분담</h4><ul>" + duty + "</ul></div>" +
             "</div>" +
-            '<a class="go" href="publications.html?member=' + encodeURIComponent(m.name) + '">' + esc(m.name) + " 관련 성과 보기 &rsaquo;</a>" +
           "</div>" +
         "</div></div>";
     }).join("");
@@ -1725,9 +1747,22 @@ window.RG_DATA = {
     var ach = $("[data-ach]");
     if (ach && D.achievements) {
       ach.innerHTML = D.achievements.map(function (a) {
-        return '<div class="ach"><b class="m">' + a.n + "</b><span>" + esc(a.label) + "</span>" +
+        var v = (a.n != null) ? a.n : tally(a.count);
+        return '<div class="ach"><b class="m">' + v +
+          (a.unit ? "<small>" + esc(a.unit) + "</small>" : "") + "</b>" +
+          "<span>" + esc(a.label) + "</span>" +
           (a.goal ? "<i>" + esc(a.goal) + "</i>" : "") + "</div>";
       }).join("");
+    }
+    var an = $("[data-achnote]");
+    if (an) {
+      var t = {};
+      (D.publications || []).forEach(function (p) { t[p.type] = (t[p.type] || 0) + 1; });
+      var mix = Object.keys(t).sort().map(function (k) {
+        return "<span>" + esc(k) + " <b>" + t[k] + "</b>편</span>";
+      }).join("");
+      an.innerHTML = "<span>게재논문 색인별</span>" + mix +
+        '<span>주요 발표 <b>' + tally("presentations") + "</b>건</span>";
     }
 
     var tr = $("[data-teams]");
@@ -1897,10 +1932,9 @@ window.RG_DATA = {
     var host = $("[data-pubs]");
     if (!host) return;
     var all = (D.publications || []).slice();
-    var st = { tab: "j", q: "", member: "all", sort: "new" };
+    var st = { tab: "j", q: "", sort: "new" };
 
     var qs = new URLSearchParams(location.search);
-    if (qs.get("member")) st.member = qs.get("member");
     if (qs.get("tab")) st.tab = qs.get("tab");
 
     var tabs = $("[data-tabs]");
@@ -1924,13 +1958,6 @@ window.RG_DATA = {
       });
     }
 
-    var selM = $("[data-mem]");
-    if (selM) {
-      var names = ["all"].concat((D.members || []).map(function (m) { return m.name; }));
-      selM.innerHTML = names.map(function (n) {
-        return '<option value="' + esc(n) + '"' + (n === st.member ? " selected" : "") + ">" + (n === "all" ? "연구자 전체" : esc(n)) + "</option>";
-      }).join("");
-    }
     var inQ = $("[data-q]"), selS = $("[data-sort]");
 
     function match(text) {
@@ -1945,7 +1972,6 @@ window.RG_DATA = {
 
       if (st.tab === "j") {
         out = all.filter(function (p) {
-          if (st.member !== "all" && !match2(p, st.member)) return false;
           return match(p.title + " " + p.authors + " " + p.venue + " " + p.year + " " + p.abstract);
         });
         out.sort(function (a, b) {
@@ -1964,7 +1990,6 @@ window.RG_DATA = {
         n = out.length;
       } else if (st.tab === "c") {
         out = (D.conferences || []).filter(function (c) {
-          if (st.member !== "all" && c.authors.indexOf(st.member) < 0) return false;
           return match(c.title + " " + c.authors + " " + c.event);
         });
         out.sort(function (a, b) { return st.sort === "old" ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date); });
@@ -1985,12 +2010,8 @@ window.RG_DATA = {
         ex.textContent = "초록 모두 펼치기";
       }
     }
-    function match2(p, name) {
-      return (p.authors || "").indexOf(name) > -1 || (p.members || []).indexOf(name) > -1;
-    }
 
     if (inQ) inQ.addEventListener("input", function () { st.q = this.value; run(); });
-    if (selM) selM.addEventListener("change", function () { st.member = this.value; run(); });
     if (selS) selS.addEventListener("change", function () { st.sort = this.value; run(); });
 
     var ex = $("[data-expand]");
@@ -2009,9 +2030,8 @@ window.RG_DATA = {
     var rs = $("[data-reset]");
     if (rs) {
       rs.addEventListener("click", function () {
-        st.q = ""; st.member = "all"; st.sort = "new";
+        st.q = ""; st.sort = "new";
         if (inQ) inQ.value = "";
-        if (selM) selM.value = "all";
         if (selS) selS.value = "new";
         run();
       });

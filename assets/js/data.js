@@ -180,12 +180,17 @@ window.RG_DATA = {
     { period: "26.09 ~ 27.02", team: "t3", work: "양자화를 통한 모델 경량화" }
   ],
 
-  /* ---------- 6. 1차년도 성과 ---------- */
+  /* ---------- 6. 연구그룹 성과 ----------
+     숫자는 아래 publications, conferences, awards 배열에서 자동으로 셉니다.
+     count 에 쓸 수 있는 값: publications, presentations, awards,
+     conferences:국제, conferences:국내, publications:KCI, publications:국제색인
+     n 값을 직접 적어 두면 세지 않고 그 값을 씁니다.
+  ------------------------------------------ */
   achievements: [
-    { label: "국내 학술대회 발표", n: 15, goal: "목표 1건" },
-    { label: "국제 학술대회 발표", n: 7, goal: "목표 1건" },
-    { label: "연구팀 주관 공개발표", n: 1, goal: "목표 0건" },
-    { label: "우수논문상 및 수상", n: 3, goal: "학회 3곳" }
+    { label: "게재논문", count: "publications", unit: "편", goal: "4년 목표 32편" },
+    { label: "국제 학술대회 발표", count: "conferences:국제", unit: "건", goal: "4년 목표 6건" },
+    { label: "국내 학술대회 발표", count: "conferences:국내", unit: "건", goal: "4년 목표 6건" },
+    { label: "우수논문상과 수상", count: "awards", unit: "건", goal: "학회 3곳" }
   ],
 
   /* ---------- 7. 성과 목표 ---------- */

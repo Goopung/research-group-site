@@ -189,7 +189,7 @@ section[id]{scroll-margin-top:96px}
 .rmid span{display:block;font-size:13.5px;color:var(--ink-3);margin-top:3px}
 .rtog{font-family:var(--ff-m);font-size:15px;color:var(--ink-3);width:22px;text-align:center;transition:transform .22s}
 .rrow[aria-expanded="true"] .rtog{transform:rotate(45deg);color:var(--mix)}
-.rdet{display:none;padding:4px 6px 30px;border-bottom:1px solid var(--line-2);background:var(--card)}
+.rdet{display:none;padding:4px 6px 26px;border-bottom:1px solid var(--line-2);background:var(--card)}
 .sec.white .rdet{background:var(--paper)}
 .rdet.open{display:block}
 .rdet-in{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 30px}
@@ -199,7 +199,6 @@ section[id]{scroll-margin-top:96px}
 .rdet p{font-size:14.5px;line-height:1.8;max-width:74ch}
 .rdet li{font-size:13.5px;position:relative;padding-left:13px;margin-bottom:4px}
 .rdet li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--tc,var(--ink-3))}
-.rdet .go{display:inline-block;margin-top:18px;font-size:13.5px;color:var(--mix);border-bottom:1px solid currentColor}
 
 /* ---------- 대표 논문 카드 ---------- */
 .pcards{display:grid;gap:16px}
@@ -437,14 +436,18 @@ section[id]{scroll-margin-top:96px}
 .ttopics li{position:relative;padding-left:13px;font-size:13.5px;color:var(--ink-2);margin-bottom:3px;line-height:1.6}
 .ttopics li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--tc)}
 
-/* 1차년도 성과 */
+/* 연구그룹 성과 */
 .achs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid var(--ink)}
 .ach{padding:22px 24px 24px;border-right:1px solid var(--line-2)}
 .ach:first-child{padding-left:0}
 .ach:last-child{border-right:0;padding-right:0}
 .ach b{display:block;font-size:38px;font-weight:500;color:var(--ink);line-height:1;letter-spacing:-.03em}
+.ach b small{font-size:15px;font-weight:400;color:var(--ink-3);margin-left:4px;letter-spacing:0}
 .ach span{display:block;font-size:14px;color:var(--ink);margin-top:10px;font-weight:500}
-.ach i{display:block;font-style:normal;font-family:var(--ff-m);font-size:11px;color:var(--ink-3);margin-top:3px}
+.ach i{display:block;font-style:normal;font-size:12px;color:var(--ink-3);margin-top:3px}
+.achnote{display:flex;flex-wrap:wrap;gap:6px 26px;border-top:1px solid var(--line-2);padding-top:14px;margin-top:0;font-size:13px;color:var(--ink-3)}
+.achnote b{font-family:var(--ff-m);color:var(--ink-2);font-weight:500}
+.achnote span:first-child{color:var(--ink-2)}
 
 /* 2차년도 일정 */
 .sched{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}

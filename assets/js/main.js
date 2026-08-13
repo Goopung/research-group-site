@@ -28,6 +28,20 @@
     var t = teamById((m.teams || [])[0]);
     return t ? t.track : (m.side === "이공" ? "sci" : "hs");
   }
+  var KCI = "KCI";
+  function tally(key) {
+    var pubs = D.publications || [], confs = D.conferences || [];
+    if (key === "publications") return pubs.length;
+    if (key === "publications:KCI") return pubs.filter(function (p) { return p.type === KCI; }).length;
+    if (key === "publications:국제색인") return pubs.filter(function (p) { return p.type !== KCI; }).length;
+    if (key === "presentations") return (D.presentations || []).length;
+    if (key === "awards") return (D.awards || []).length;
+    if (key === "conferences") return confs.length;
+    if (key === "conferences:국제") return confs.filter(function (c) { return c.scope === "국제"; }).length;
+    if (key === "conferences:국내") return confs.filter(function (c) { return c.scope === "국내"; }).length;
+    return 0;
+  }
+
   function nowYearIdx() {
     var t = Date.now(), k = -1;
     (D.roadmap || []).forEach(function (r, i) { if (t >= new Date(r.start).getTime()) k = i; });
@@ -94,7 +108,6 @@
               "<div><h4>연구 분야</h4><ul>" + flds + "</ul></div>" +
               "<div><h4>역할 분담</h4><ul>" + duty + "</ul></div>" +
             "</div>" +
-            '<a class="go" href="publications.html?member=' + encodeURIComponent(m.name) + '">' + esc(m.name) + " 관련 성과 보기 &rsaquo;</a>" +
           "</div>" +
         "</div></div>";
     }).join("");
@@ -268,9 +281,22 @@
     var ach = $("[data-ach]");
     if (ach && D.achievements) {
       ach.innerHTML = D.achievements.map(function (a) {
-        return '<div class="ach"><b class="m">' + a.n + "</b><span>" + esc(a.label) + "</span>" +
+        var v = (a.n != null) ? a.n : tally(a.count);
+        return '<div class="ach"><b class="m">' + v +
+          (a.unit ? "<small>" + esc(a.unit) + "</small>" : "") + "</b>" +
+          "<span>" + esc(a.label) + "</span>" +
           (a.goal ? "<i>" + esc(a.goal) + "</i>" : "") + "</div>";
       }).join("");
+    }
+    var an = $("[data-achnote]");
+    if (an) {
+      var t = {};
+      (D.publications || []).forEach(function (p) { t[p.type] = (t[p.type] || 0) + 1; });
+      var mix = Object.keys(t).sort().map(function (k) {
+        return "<span>" + esc(k) + " <b>" + t[k] + "</b>편</span>";
+      }).join("");
+      an.innerHTML = "<span>게재논문 색인별</span>" + mix +
+        '<span>주요 발표 <b>' + tally("presentations") + "</b>건</span>";
     }
 
     var tr = $("[data-teams]");
@@ -440,10 +466,9 @@
     var host = $("[data-pubs]");
     if (!host) return;
     var all = (D.publications || []).slice();
-    var st = { tab: "j", q: "", member: "all", sort: "new" };
+    var st = { tab: "j", q: "", sort: "new" };
 
     var qs = new URLSearchParams(location.search);
-    if (qs.get("member")) st.member = qs.get("member");
     if (qs.get("tab")) st.tab = qs.get("tab");
 
     var tabs = $("[data-tabs]");
@@ -467,13 +492,6 @@
       });
     }
 
-    var selM = $("[data-mem]");
-    if (selM) {
-      var names = ["all"].concat((D.members || []).map(function (m) { return m.name; }));
-      selM.innerHTML = names.map(function (n) {
-        return '<option value="' + esc(n) + '"' + (n === st.member ? " selected" : "") + ">" + (n === "all" ? "연구자 전체" : esc(n)) + "</option>";
-      }).join("");
-    }
     var inQ = $("[data-q]"), selS = $("[data-sort]");
 
     function match(text) {
@@ -488,7 +506,6 @@
 
       if (st.tab === "j") {
         out = all.filter(function (p) {
-          if (st.member !== "all" && !match2(p, st.member)) return false;
           return match(p.title + " " + p.authors + " " + p.venue + " " + p.year + " " + p.abstract);
         });
         out.sort(function (a, b) {
@@ -507,7 +524,6 @@
         n = out.length;
       } else if (st.tab === "c") {
         out = (D.conferences || []).filter(function (c) {
-          if (st.member !== "all" && c.authors.indexOf(st.member) < 0) return false;
           return match(c.title + " " + c.authors + " " + c.event);
         });
         out.sort(function (a, b) { return st.sort === "old" ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date); });
@@ -528,12 +544,8 @@
         ex.textContent = "초록 모두 펼치기";
       }
     }
-    function match2(p, name) {
-      return (p.authors || "").indexOf(name) > -1 || (p.members || []).indexOf(name) > -1;
-    }
 
     if (inQ) inQ.addEventListener("input", function () { st.q = this.value; run(); });
-    if (selM) selM.addEventListener("change", function () { st.member = this.value; run(); });
     if (selS) selS.addEventListener("change", function () { st.sort = this.value; run(); });
 
     var ex = $("[data-expand]");
@@ -552,9 +564,8 @@
     var rs = $("[data-reset]");
     if (rs) {
       rs.addEventListener("click", function () {
-        st.q = ""; st.member = "all"; st.sort = "new";
+        st.q = ""; st.sort = "new";
         if (inQ) inQ.value = "";
-        if (selM) selM.value = "all";
         if (selS) selS.value = "new";
         run();
       });
