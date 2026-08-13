@@ -75,9 +75,6 @@
       var tnames = (m.teams || []).map(function (id) {
         var t = teamById(id); return t ? t.name : id;
       }).join(", ");
-      var stat = (m.stats || []).map(function (s) {
-        return '<span class="st"><span class="k">' + esc(s.k) + '</span><span class="v">' + esc(s.v) + "</span></span>";
-      }).join("");
       var duty = (m.duty || []).map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("");
       var flds = (m.fields || []).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
       var id = "rd" + i;
@@ -87,8 +84,8 @@
             "<span><b>" + esc(m.name) + '</b><i>' + esc(m.nameEn) + "</i></span>" +
           "</span>" +
           '<span class="rmid"><b>' + esc(m.affil) + " " + esc(m.dept) + " " + esc(m.title) + "</b>" +
-            "<span>" + esc(m.role) + " / " + esc((m.fields || []).slice(0, 3).join(", ")) + "</span></span>" +
-          '<span class="rstat">' + stat + '<span class="rtog" aria-hidden="true">+</span></span>' +
+            "<span>" + esc(m.role) + " / " + esc((m.fields || []).join(", ")) + "</span></span>" +
+          '<span class="rtog" aria-hidden="true">+</span>' +
         "</button>" +
         '<div class="rdet" id="' + id + '" data-track="' + tk + '"><div class="rdet-in">' +
           "<div>" + esc(tnames) + "</div>" +
@@ -229,12 +226,22 @@
   function renderHome() {
     var P = D.project || {}, PL = D.pipeline || {};
 
+    var tko = $("[data-title-ko]");
+    if (tko) {
+      var lead = P.titleKoLead;
+      lead = (typeof lead === "string" ? [lead] : lead || []);
+      tko.innerHTML = lead.map(function (t) {
+        return '<span class="ln">' + esc(t) + " </span>";
+      }).join("") + '<span class="tail">' + esc(P.titleKoTail) + "</span>";
+    }
+    var ten = $("[data-title-en]");
+    if (ten) ten.textContent = P.titleEn;
+
     var f = $("[data-facts]");
     if (f) {
       f.innerHTML = [
         ["연구기간", P.period],
-        ["과제번호", P.grantNo],
-        ["연구진", P.teamSize]
+        ["과제번호", P.grantNo]
       ].map(function (x) { return "<span>" + esc(x[0]) + " <b>" + esc(x[1]) + "</b></span>"; }).join("");
     }
 
@@ -319,8 +326,16 @@
     var og = $("[data-orgs]");
     if (og) {
       og.innerHTML = (D.institutions || []).map(function (o) {
-        return '<a class="org" href="' + esc(o.url) + '" target="_blank" rel="noopener"><i>' + esc(o.role) + "</i><b>" + esc(o.name) + "</b></a>";
+        var art = o.logo
+          ? '<img src="' + esc(o.logo) + '" alt="' + esc(o.name) + '" loading="lazy" data-h="' + (o.logoH || 26) + '">'
+          : "<b>" + esc(o.name) + "</b>";
+        return '<a class="org" href="' + esc(o.url) + '" target="_blank" rel="noopener">' +
+          "<i>" + esc(o.role) + "</i>" + art +
+          '<span class="sr-only">' + esc(o.name) + " 홈페이지로 이동</span></a>";
       }).join("");
+      $$("img[data-h]", og).forEach(function (im) {
+        im.style.setProperty("height", im.getAttribute("data-h") + "px");
+      });
     }
   }
 

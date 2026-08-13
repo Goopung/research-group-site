@@ -11,6 +11,8 @@ window.RG_DATA = {
     program: "2025년도 글로벌인문사회융합연구지원사업 (연구그룹 지원형, 국내형)",
     grantNo: "NRF-2025S1A5C3A01010737",
     titleKo: "멀티모달 데이터, 딥러닝, 생성형 AI, 양자기계학습을 활용한 지능형 기업 의사결정시스템",
+    titleKoLead: ["멀티모달 데이터, 딥러닝, 생성형 AI,", "양자기계학습을 활용한"],
+    titleKoTail: "지능형 기업 의사결정시스템",
     titleEn: "Intelligent Corporate-Level Decision-Making System Using Multimodal Data, Deep Learning, Generative AI and Quantum Machine Learning",
     oneLine: "회계와 재무 연구에 인공지능과 양자기계학습을 결합해, 기업의 멀티모달 데이터를 실제 의사결정으로 바꾸는 융합연구그룹입니다.",
     pi: "최승욱",
@@ -212,8 +214,7 @@ window.RG_DATA = {
       side: "인문사회",
       teams: ["t2"],
       duty: ["연구설계 및 연구진행 총괄", "연구자 간 네트워크 관리와 연구성과 취합", "경영 및 회계 통계 분석", "논문 작성"],
-      note: "The Accounting Review, Contemporary Accounting Research 등 회계 분야 최상위 저널에 게재했습니다. BYU Accounting Research Rankings(Archival, 최근 6년) 전분야 476위, 회계감사분야 76위입니다.",
-      stats: [{ k: "SSCI", v: 16 }, { k: "KCI", v: 19 }, { k: "수주과제", v: 16 }]
+      note: "회계 투명성과 감사 노력, 회계기준의 효과를 실증적으로 연구합니다. The Accounting Review, Contemporary Accounting Research 등 회계 분야 주요 저널에 연구를 게재했습니다."
     },
     {
       name: "권오병",
@@ -227,8 +228,7 @@ window.RG_DATA = {
       side: "인문사회",
       teams: ["t3"],
       duty: ["경영 통계 분석", "비정형 빅데이터 수집 및 텍스트 마이닝", "딥러닝 분석", "논문 작성"],
-      note: "양자기계학습의 경영 적용, 설명가능한 주가변동 예측, XR과 메타버스 소비자 행동을 연구합니다. 1차년도에 국내외 학술대회에서 다수의 연구를 발표했습니다.",
-      stats: [{ k: "1차년도 발표", v: 7 }, { k: "국제학술대회", v: 2 }, { k: "연구팀", v: "융합" }]
+      note: "인공지능의 경영 적용과 양자기계학습, 우주비즈니스를 연구합니다. 본 과제에서는 설명가능한 주가변동 예측과 양자 생성모형을 맡고 있습니다."
     },
     {
       name: "황인준",
@@ -242,8 +242,7 @@ window.RG_DATA = {
       side: "이공",
       teams: ["t1"],
       duty: ["딥러닝 기반 데이터 분석 및 시스템 구현", "비정형 빅데이터 수집 및 텍스트 마이닝", "논문 작성"],
-      note: "IEEE Journal of Biomedical and Health Informatics, Journal of Building Engineering 등에 인공지능 관련 논문을 게재했습니다. 1차년도에 ASK 2025 우수논문상을 수상했습니다.",
-      stats: [{ k: "SCIE", v: 56 }, { k: "KCI", v: 17 }, { k: "수주과제", v: 11 }]
+      note: "멀티미디어 처리와 빅데이터 응용, 데이터 검색을 연구합니다. IEEE Journal of Biomedical and Health Informatics, Journal of Building Engineering 등에 인공지능 관련 논문을 게재했습니다."
     },
     {
       name: "안성희",
@@ -257,8 +256,7 @@ window.RG_DATA = {
       side: "인문사회",
       teams: ["t2"],
       duty: ["경영 및 회계 통계 분석", "기업의 정성적 정보 수집", "기업 재무데이터 수집", "논문 작성"],
-      note: "한국공인회계사(KICPA)로 삼일회계법인 경영컨설팅, NH저축은행 및 대우건설 사외이사를 지냈습니다. Journal of Business Finance & Accounting에 재무회계 연구를 게재했습니다.",
-      stats: [{ k: "SSCI", v: 1 }, { k: "KCI", v: 16 }, { k: "수주과제", v: 7 }]
+      note: "지배구조와 회계감사, 기업가치평가를 연구합니다. 한국공인회계사(KICPA)로 삼일회계법인 경영컨설팅, NH저축은행과 대우건설 사외이사를 지냈습니다."
     },
     {
       name: "나형종",
@@ -272,8 +270,7 @@ window.RG_DATA = {
       side: "인문사회",
       teams: ["t2"],
       duty: ["경영 및 회계 통계 분석", "비정형 빅데이터 수집 및 텍스트 마이닝", "논문 작성"],
-      note: "텍스트마이닝과 딥러닝을 회계와 조세 주제에 적용하는 융합연구를 합니다. 신협 자문위원으로 인공지능 도입 방안을 자문하고 있습니다.",
-      stats: [{ k: "SSCI/SCI", v: 11 }, { k: "KCI", v: 16 }, { k: "수주과제", v: 5 }]
+      note: "텍스트마이닝과 딥러닝을 회계와 조세 주제에 적용하는 융합연구를 합니다. 신협 자문위원으로 인공지능 도입 방안을 자문하고 있습니다."
     },
     {
       name: "김형준",
@@ -287,8 +284,7 @@ window.RG_DATA = {
       side: "이공",
       teams: ["t1", "t3"],
       duty: ["양자기계학습(QML) 및 AI 모델 개발", "컴퓨터 비전 데이터 수집", "생성형 AI를 통한 분석", "논문 작성"],
-      note: "ISA Transactions, Measurement 등에 컴퓨터 비전 연구를 게재했습니다. 1차년도에 WACV 2026 논문이 채택되었고 Financial Diffusion 연구를 주도했습니다.",
-      stats: [{ k: "SCIE/Scopus", v: 12 }, { k: "1차년도 발표", v: 4 }, { k: "연구팀", v: "이공, 융합" }]
+      note: "컴퓨터 비전과 멀티모달 AI, 대규모 언어모델을 연구합니다. 본 과제에서는 WACV 2026 논문과 Financial Diffusion 연구를 맡고 있습니다."
     }
   ],
 
@@ -585,13 +581,16 @@ window.RG_DATA = {
     ]
   },
 
-  /* ---------- 14. 참여기관 ---------- */
+  /* ---------- 14. 참여기관 ----------
+     logoH 는 화면에 보이는 로고 높이(px)입니다. 로고마다 여백이 달라
+     시각적으로 크기를 맞추려고 값을 조금씩 다르게 두었습니다.
+  ------------------------------------------ */
   institutions: [
-    { name: "경희대학교", role: "주관기관", url: "https://www.khu.ac.kr" },
-    { name: "고려대학교", role: "참여기관", url: "https://www.korea.ac.kr" },
-    { name: "가톨릭대학교", role: "참여기관", url: "https://www.catholic.ac.kr" },
-    { name: "세명대학교", role: "참여기관", url: "https://www.semyung.ac.kr" },
-    { name: "창원대학교", role: "참여기관", url: "https://www.changwon.ac.kr" }
+    { name: "경희대학교", role: "주관기관", url: "https://www.khu.ac.kr", logo: "assets/img/logo/khu.png", logoH: 27 },
+    { name: "고려대학교", role: "참여기관", url: "https://www.korea.ac.kr", logo: "assets/img/logo/korea.png", logoH: 30 },
+    { name: "가톨릭대학교", role: "참여기관", url: "https://www.catholic.ac.kr", logo: "assets/img/logo/catholic.png", logoH: 27 },
+    { name: "세명대학교", role: "참여기관", url: "https://www.semyung.ac.kr", logo: "assets/img/logo/semyung.png", logoH: 23 },
+    { name: "창원대학교", role: "참여기관", url: "https://www.changwon.ac.kr", logo: "assets/img/logo/changwon.svg", logoH: 27 }
   ],
 
   /* ---------- 15. 소식 ---------- */
